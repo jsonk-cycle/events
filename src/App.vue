@@ -1,32 +1,21 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <div>App 根组件</div>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import { getListAPI } from '@/api'
+export default {
+  name: 'App',
+  created() {
+    this.getListFn()
+  },
+  methods: {
+    async getListFn() {
+      const res = await getListAPI()
+      console.log(res)
+    }}}
+</script>
 
-nav {
-  padding: 30px;
+<style lang="less" scoped>
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
